@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Remove Deploy Action from grupoM1, grupoM2, grupoM3, grupoN1, grupoN2, grupoN3, grupoN4, grupoN5, grupoN6, teste1, teste2
       run: |
