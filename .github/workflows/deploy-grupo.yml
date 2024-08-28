@@ -3,9 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - grupoA
-      - grupoB
-      - grupoC
+      - grupoM1
+      - grupoM2
+      - grupoM3
+      ##################
       - teste1
       - teste2
 
@@ -18,42 +19,43 @@ jobs:
       with:
         ref: ${{ github.ref }}
 
-    - name: Deploy grupoA
-      if: github.ref == 'refs/heads/grupoA'
+    - name: Deploy grupoM1
+      if: github.ref == 'refs/heads/grupoM1'
       run: |
-        mkdir -p public/grupoA
-        mv * public/grupoA/
-        touch public/grupoA/.nojekyll
+        mkdir -p public/grupoM1
+        mv * public/grupoM1/
+        touch public/grupoM1/.nojekyll
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add .
-        git commit -m "Deploy grupoA to GitHub Pages"
-        git push origin grupoA
+        git commit -m "Deploy grupoM1 to GitHub Pages"
+        git push origin grupoM1
 
-    - name: Deploy grupoB
-      if: github.ref == 'refs/heads/grupoB'
+    - name: Deploy grupoM2
+      if: github.ref == 'refs/heads/grupoM2'
       run: |
-        mkdir -p public/grupoB
-        mv * public/grupoB/
-        touch public/grupoB/.nojekyll
+        mkdir -p public/grupoM2
+        mv * public/grupoM2/
+        touch public/grupoM2/.nojekyll
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add .
-        git commit -m "Deploy grupoB to GitHub Pages"
-        git push origin grupoB
+        git commit -m "Deploy grupoM2 to GitHub Pages"
+        git push origin grupoM2
 
-    - name: Deploy grupoC
-      if: github.ref == 'refs/heads/grupoC'
+    - name: Deploy grupoM3
+      if: github.ref == 'refs/heads/grupoM3'
       run: |
-        mkdir -p public/grupoC
-        mv * public/grupoC/
-        touch public/grupoC/.nojekyll
+        mkdir -p public/grupoM3
+        mv * public/grupoM3/
+        touch public/grupoM3/.nojekyll
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add .
-        git commit -m "Deploy grupoC to GitHub Pages"
-        git push origin grupoC
-
+        git commit -m "Deploy grupoM3 to GitHub Pages"
+        git push origin grupoM3
+        
+##################################################################################################
     - name: Deploy teste1
       if: github.ref == 'refs/heads/teste1'
       run: |
