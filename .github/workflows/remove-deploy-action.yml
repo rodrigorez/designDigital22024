@@ -6,6 +6,8 @@ on:
       - grupoA
       - grupoB
       - grupoC
+      - teste1
+      - teste2
 
 jobs:
   remove-deploy-action:
@@ -14,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Remove Deploy Action from grupoA, grupoB, grupoC
+    - name: Remove Deploy Action from grupoA, grupoB, grupoC, teste1, teste2
       run: |
         rm -f .github/workflows/deploy-grupo.yml
         git config user.name "GitHub Actions"
@@ -22,4 +24,3 @@ jobs:
         git add .github/workflows/deploy-grupo.yml
         git commit -m "Remove deploy action from non-main branch"
         git push origin ${{ github.ref }}
-
