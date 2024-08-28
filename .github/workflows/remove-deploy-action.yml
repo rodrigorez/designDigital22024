@@ -1,1 +1,25 @@
+name: Remove Deploy Action from Non-Main Branches
+
+on:
+  push:
+    branches:
+      - grupoA
+      - grupoB
+      - grupoC
+
+jobs:
+  remove-deploy-action:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Remove Deploy Action from grupoA, grupoB, grupoC
+      run: |
+        rm -f .github/workflows/deploy-grupo.yml
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .github/workflows/deploy-grupo.yml
+        git commit -m "Remove deploy action from non-main branch"
+        git push origin ${{ github.ref }}
 
