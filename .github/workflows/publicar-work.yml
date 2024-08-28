@@ -33,3 +33,5 @@ jobs:
           git add public/grupoX/work/
           git commit -m "Publicação automática do diretório work"
           git push origin gh-pages
+
+          
