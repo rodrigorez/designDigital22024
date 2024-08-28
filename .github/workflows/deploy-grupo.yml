@@ -6,6 +6,12 @@ on:
       - grupoM1
       - grupoM2
       - grupoM3
+      - grupoN1
+      - grupoN2
+      - grupoN3
+      - grupoN4
+      - grupoN5
+      - grupoN6
       ##################
       - teste1
       - teste2
@@ -15,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3  # Atualização para a versão v3
       with:
         ref: ${{ github.ref }}
 
@@ -23,7 +29,7 @@ jobs:
       if: github.ref == 'refs/heads/grupoM1'
       run: |
         mkdir -p public/grupoM1
-        mv * public/grupoM1/
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoM1/ \;
         touch public/grupoM1/.nojekyll
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
@@ -35,7 +41,7 @@ jobs:
       if: github.ref == 'refs/heads/grupoM2'
       run: |
         mkdir -p public/grupoM2
-        mv * public/grupoM2/
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoM2/ \;
         touch public/grupoM2/.nojekyll
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
@@ -47,20 +53,91 @@ jobs:
       if: github.ref == 'refs/heads/grupoM3'
       run: |
         mkdir -p public/grupoM3
-        mv * public/grupoM3/
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoM3/ \;
         touch public/grupoM3/.nojekyll
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoM3 to GitHub Pages"
         git push origin grupoM3
-        
-##################################################################################################
+
+    - name: Deploy grupoN1
+      if: github.ref == 'refs/heads/grupoN1'
+      run: |
+        mkdir -p public/grupoN1
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN1/ \;
+        touch public/grupoN1/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy grupoN1 to GitHub Pages"
+        git push origin grupoN1
+
+    - name: Deploy grupoN2
+      if: github.ref == 'refs/heads/grupoN2'
+      run: |
+        mkdir -p public/grupoN2
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN2/ \;
+        touch public/grupoN2/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy grupoN2 to GitHub Pages"
+        git push origin grupoN2
+
+    - name: Deploy grupoN3
+      if: github.ref == 'refs/heads/grupoN3'
+      run: |
+        mkdir -p public/grupoN3
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN3/ \;
+        touch public/grupoN3/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy grupoN3 to GitHub Pages"
+        git push origin grupoN3
+
+    - name: Deploy grupoN4
+      if: github.ref == 'refs/heads/grupoN4'
+      run: |
+        mkdir -p public/grupoN4
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN4/ \;
+        touch public/grupoN4/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy grupoN4 to GitHub Pages"
+        git push origin grupoN4
+
+    - name: Deploy grupoN5
+      if: github.ref == 'refs/heads/grupoN5'
+      run: |
+        mkdir -p public/grupoN5
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN5/ \;
+        touch public/grupoN5/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy grupoN5 to GitHub Pages"
+        git push origin grupoN5
+
+    - name: Deploy grupoN6
+      if: github.ref == 'refs/heads/grupoN6'
+      run: |
+        mkdir -p public/grupoN6
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN6/ \;
+        touch public/grupoN6/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy grupoN6 to GitHub Pages"
+        git push origin grupoN6
+
     - name: Deploy teste1
       if: github.ref == 'refs/heads/teste1'
       run: |
         mkdir -p public/teste1
-        mv * public/teste1/
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/teste1/ \;
         touch public/teste1/.nojekyll
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
@@ -72,7 +149,7 @@ jobs:
       if: github.ref == 'refs/heads/teste2'
       run: |
         mkdir -p public/teste2
-        mv * public/teste2/
+        find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/teste2/ \;
         touch public/teste2/.nojekyll
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
