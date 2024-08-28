@@ -3,7 +3,7 @@ name: Publicar diretório work no GitHub Pages
 on:
   push:
     branches:
-      - grupoX  # Troque por nome da branch que deseja monitorar
+      - teste2  # Troque por nome da branch que deseja monitorar
 
 jobs:
   deploy:
