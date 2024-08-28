@@ -1,1 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - grupoA
+      - grupoB
+      - grupoC
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+
+    - name: Deploy grupoA
+      if: github.ref == 'refs/heads/grupoA'
+      run: |
+        mkdir -p public/grupoA
+        mv * public/grupoA/
+        touch public/grupoA/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy grupoA to GitHub Pages"
+        git push origin grupoA
+
+    - name: Deploy grupoB
+      if: github.ref == 'refs/heads/grupoB'
+      run: |
+        mkdir -p public/grupoB
+        mv * public/grupoB/
+        touch public/grupoB/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy grupoB to GitHub Pages"
+        git push origin grupoB
+
+    - name: Deploy grupoC
+      if: github.ref == 'refs/heads/grupoC'
+      run: |
+        mkdir -p public/grupoC
+        mv * public/grupoC/
+        touch public/grupoC/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy grupoC to GitHub Pages"
+        git push origin grupoC
 
