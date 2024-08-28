@@ -1,9 +1,9 @@
-name: Publicar diretório work automaticamente
+name: Publicar diretório work no GitHub Pages
 
 on:
   push:
     branches:
-      - grupoX
+      - grupoX  # Troque por nome da branch que deseja monitorar
 
 jobs:
   deploy:
@@ -12,13 +12,24 @@ jobs:
       - name: Checkout do repositório
         uses: actions/checkout@v2
 
-      - name: Publicar no diretório work
+      - name: Configurar Git
         run: |
-          git worktree add ../gh-pages ../gh-pages
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+
+      - name: Publicar no GitHub Pages
+        run: |
+          # Adiciona um novo worktree para a branch gh-pages
+          git worktree add ../gh-pages gh-pages
+
+          # Remove os arquivos antigos do diretório work na branch gh-pages
           rm -rf ../gh-pages/public/grupoX/work/*
+
+          # Copia o conteúdo do diretório work para a branch gh-pages
           cp -r public/grupoX/work/* ../gh-pages/public/grupoX/work/
+
+          # Faz commit e push das mudanças para a branch gh-pages
           cd ../gh-pages
           git add public/grupoX/work/
           git commit -m "Publicação automática do diretório work"
           git push origin gh-pages
-
