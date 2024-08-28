@@ -1,1 +1,24 @@
+name: Publicar diretório work automaticamente
+
+on:
+  push:
+    branches:
+      - grupoX
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Publicar no diretório work
+        run: |
+          git worktree add ../gh-pages ../gh-pages
+          rm -rf ../gh-pages/public/grupoX/work/*
+          cp -r public/grupoX/work/* ../gh-pages/public/grupoX/work/
+          cd ../gh-pages
+          git add public/grupoX/work/
+          git commit -m "Publicação automática do diretório work"
+          git push origin gh-pages
 
