@@ -23,14 +23,14 @@ jobs:
           git worktree add ../gh-pages gh-pages
 
           # Remove os arquivos antigos do diretório work na branch gh-pages
-          rm -rf ../gh-pages/public/grupoX/work/*
+          rm -rf ../gh-pages/public/teste2/work/*
 
           # Copia o conteúdo do diretório work para a branch gh-pages
-          cp -r public/grupoX/work/* ../gh-pages/public/grupoX/work/
+          cp -r public/teste2/work/* ../gh-pages/public/teste2/work/
 
           # Faz commit e push das mudanças para a branch gh-pages
           cd ../gh-pages
-          git add public/grupoX/work/
+          git add public/teste2/work/
           git commit -m "Publicação automática do diretório work"
           git push origin gh-pages
 
