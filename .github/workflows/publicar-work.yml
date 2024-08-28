@@ -3,7 +3,7 @@ name: Publicar diretório work no GitHub Pages
 on:
   push:
     branches:
-      - teste2  # Troque por nome da branch que deseja monitorar
+      - '**'  # Captura todos os commits em todas as branches
 
 jobs:
   deploy:
@@ -17,21 +17,27 @@ jobs:
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
 
+      - name: Extrair o nome da branch
+        id: vars
+        run: |
+          BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}")
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Verificar se a branch gh-pages existe
+        run: |
+          if ! git show-ref --quiet refs/heads/gh-pages; then
+            git checkout --orphan gh-pages
+            git rm -rf .
+            git commit --allow-empty -m "Inicializando a branch gh-pages"
+            git push origin gh-pages
+          fi
+
       - name: Publicar no GitHub Pages
         run: |
-          # Adiciona um novo worktree para a branch gh-pages
           git worktree add ../gh-pages gh-pages
-
-          # Remove os arquivos antigos do diretório work na branch gh-pages
-          rm -rf ../gh-pages/public/teste2/work/*
-
-          # Copia o conteúdo do diretório work para a branch gh-pages
-          cp -r public/teste2/work/* ../gh-pages/public/teste2/work/
-
-          # Faz commit e push das mudanças para a branch gh-pages
+          rm -rf ../gh-pages/public/$BRANCH_NAME/work/*
+          cp -r public/$BRANCH_NAME/work/* ../gh-pages/public/$BRANCH_NAME/work/
           cd ../gh-pages
-          git add public/teste2/work/
-          git commit -m "Publicação automática do diretório work"
+          git add public/$BRANCH_NAME/work/
+          git commit -m "Publicação automática do diretório work para $BRANCH_NAME"
           git push origin gh-pages
-
-          
