@@ -3,7 +3,7 @@ name: Publicar diretório work no GitHub Pages
 on:
   push:
     branches:
-      - '**'  # Captura todos os commits em todas as branches
+      - '**'
 
 jobs:
   deploy:
@@ -16,12 +16,6 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
-
-      - name: Extrair o nome da branch
-        id: vars
-        run: |
-          BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}")
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
       - name: Verificar se a branch gh-pages existe
         run: |
@@ -41,3 +35,5 @@ jobs:
           git add public/$BRANCH_NAME/work/
           git commit -m "Publicação automática do diretório work para $BRANCH_NAME"
           git push origin gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
