@@ -21,9 +21,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3  # Atualização para a versão v3
-      with:
-        ref: ${{ github.ref }}
+    - name: Checkout repository
+      uses: actions/checkout@v3  # Certifica-se de que o repositório seja checado corretamente
+
+    - name: Set up Git user
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
 
     - name: Deploy grupoM1
       if: github.ref == 'refs/heads/grupoM1'
@@ -31,8 +35,6 @@ jobs:
         mkdir -p public/grupoM1
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoM1/ \;
         touch public/grupoM1/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoM1 to GitHub Pages"
         git push origin grupoM1
@@ -43,8 +45,6 @@ jobs:
         mkdir -p public/grupoM2
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoM2/ \;
         touch public/grupoM2/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoM2 to GitHub Pages"
         git push origin grupoM2
@@ -55,8 +55,6 @@ jobs:
         mkdir -p public/grupoM3
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoM3/ \;
         touch public/grupoM3/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoM3 to GitHub Pages"
         git push origin grupoM3
@@ -67,8 +65,6 @@ jobs:
         mkdir -p public/grupoN1
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN1/ \;
         touch public/grupoN1/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoN1 to GitHub Pages"
         git push origin grupoN1
@@ -79,8 +75,6 @@ jobs:
         mkdir -p public/grupoN2
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN2/ \;
         touch public/grupoN2/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoN2 to GitHub Pages"
         git push origin grupoN2
@@ -91,8 +85,6 @@ jobs:
         mkdir -p public/grupoN3
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN3/ \;
         touch public/grupoN3/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoN3 to GitHub Pages"
         git push origin grupoN3
@@ -103,8 +95,6 @@ jobs:
         mkdir -p public/grupoN4
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN4/ \;
         touch public/grupoN4/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoN4 to GitHub Pages"
         git push origin grupoN4
@@ -115,8 +105,6 @@ jobs:
         mkdir -p public/grupoN5
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN5/ \;
         touch public/grupoN5/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoN5 to GitHub Pages"
         git push origin grupoN5
@@ -127,8 +115,6 @@ jobs:
         mkdir -p public/grupoN6
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/grupoN6/ \;
         touch public/grupoN6/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy grupoN6 to GitHub Pages"
         git push origin grupoN6
@@ -139,8 +125,6 @@ jobs:
         mkdir -p public/teste1
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/teste1/ \;
         touch public/teste1/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy teste1 to GitHub Pages"
         git push origin teste1
@@ -151,8 +135,6 @@ jobs:
         mkdir -p public/teste2
         find . -mindepth 1 -maxdepth 1 ! -name 'public' -exec mv {} public/teste2/ \;
         touch public/teste2/.nojekyll
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
         git add .
         git commit -m "Deploy teste2 to GitHub Pages"
         git push origin teste2
