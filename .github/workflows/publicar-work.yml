@@ -24,6 +24,10 @@ jobs:
             git rm -rf .
             git commit --allow-empty -m "Inicializando a branch gh-pages"
             git push origin gh-pages
+          else
+            git fetch origin gh-pages
+            git checkout gh-pages
+            git reset --hard origin/gh-pages
           fi
 
       - name: Publicar no GitHub Pages
@@ -34,6 +38,5 @@ jobs:
           cd ../gh-pages
           git add public/$BRANCH_NAME/work/
           git commit -m "Publicação automática do diretório work para $BRANCH_NAME"
+          git pull --rebase origin gh-pages  # Sincroniza com as mudanças remotas
           git push origin gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
