@@ -6,6 +6,8 @@ on:
       - grupoA
       - grupoB
       - grupoC
+      - teste1
+      - teste2
 
 jobs:
   deploy:
@@ -52,3 +54,26 @@ jobs:
         git commit -m "Deploy grupoC to GitHub Pages"
         git push origin grupoC
 
+    - name: Deploy teste1
+      if: github.ref == 'refs/heads/teste1'
+      run: |
+        mkdir -p public/teste1
+        mv * public/teste1/
+        touch public/teste1/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy teste1 to GitHub Pages"
+        git push origin teste1
+
+    - name: Deploy teste2
+      if: github.ref == 'refs/heads/teste2'
+      run: |
+        mkdir -p public/teste2
+        mv * public/teste2/
+        touch public/teste2/.nojekyll
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy teste2 to GitHub Pages"
+        git push origin teste2
