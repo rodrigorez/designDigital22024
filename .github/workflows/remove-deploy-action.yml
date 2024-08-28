@@ -3,9 +3,16 @@ name: Remove Deploy Action from Non-Main Branches
 on:
   push:
     branches:
-      - grupoA
-      - grupoB
-      - grupoC
+      - grupoM1
+      - grupoM2
+      - grupoM3
+      - grupoN1
+      - grupoN2
+      - grupoN3
+      - grupoN4
+      - grupoN5
+      - grupoN6
+###############################################
       - teste1
       - teste2
 
@@ -16,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Remove Deploy Action from grupoA, grupoB, grupoC, teste1, teste2
+    - name: Remove Deploy Action from grupoM1, grupoM2, grupoM3, grupoN1, grupoN2, grupoN3, grupoN4, grupoN5, grupoN6, teste1, teste2
       run: |
         rm -f .github/workflows/deploy-grupo.yml
         git config user.name "GitHub Actions"
