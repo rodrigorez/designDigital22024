@@ -1,0 +1,21 @@
+name: Publicar diretório test manualmente
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Publicar no diretório test
+        run: |
+          git worktree add ../gh-pages ../gh-pages
+          rm -rf ../gh-pages/public/grupoX/test/*
+          cp -r public/grupoX/work/* ../gh-pages/public/grupoX/test/
+          cd ../gh-pages
+          git add public/grupoX/test/
+          git commit -m "Publicação manual do diretório test"
+          git push origin gh-pages
