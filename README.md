@@ -32,6 +32,10 @@ Nesta materia, vocês irão aprender a criar projetos digitais, focando no desig
 
 ## 28/8 Site em html
 
+## 25/9 Prova N1
+
+## 27/11 Prova N2
+
 Tarefas para todos os grupos 
 Implementar a estrutura básica do HTML5, incluindo as tags.
 
